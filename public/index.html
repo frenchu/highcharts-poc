@@ -1,0 +1,60 @@
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>GoldScraper</title>
+	<script src="https://code.highcharts.com/highcharts.js"></script>
+	<script src="https://code.highcharts.com/modules/data.js"></script>
+	<script src="https://code.highcharts.com/modules/exporting.js"></script>
+</head>
+
+<body>
+<div id="chart_container" />
+<script>	
+document.addEventListener('DOMContentLoaded', function () {
+	var myChart = Highcharts.chart('chart_container', {
+		data: {
+			csvURL: 'https://goldscraper.x25.pl/price',
+			seriesMapping: [{
+				x: 0,
+				y: 2,
+				name: 1,
+				currency: 3
+			}],
+			firstRowAsNames: false
+		},
+		title: {
+			text: 'Gold price'
+		},
+		subtitle: {
+			text: 'Source: mennica.com.pl'
+		},
+		xAxis: {
+			title: {
+				text: 'Time'
+			}
+		},
+		yAxis: {
+			title: {
+				text: 'Price'
+			}
+		},
+		legend: {
+			align: 'left',
+			verticalAlign: 'top',
+			borderWidth: 0
+		},
+		plotOptions: {
+			series: {
+				tooltip: {
+					valueSuffix: ' {point.currency}'
+				}
+			}
+		},
+		series: [{
+			name: 'Krugerand'
+		}]
+	});
+});	
+</script>
+</body>
+</html>
